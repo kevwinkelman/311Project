@@ -73,19 +73,19 @@
             </div>
         </div>
         
-        <H1> This is Page 6</H1>
+        <H1>Usernames</H1>
         
         
         <body>
         
-        <h2>Create Object from JSON String</h2>
+        <h2>Lets record your usernames!</h2>
         
-        <p>What is Employee One's favorite game?</p>
-        <input id="gameInput" type="text">
-        <p id="myDiv">What is Employee Two's favorite game?</p>
-        <input id="gameInputTwo" type="text">
-        <p id="myDiv">What is Employee Three's favorite game?</p>
-        <input id="gameInputThree" type="text">
+        <p>What is User One's Username?</p>
+        <input id="usernameInput" type="text">
+        <p id="myDiv">What is User Two's Username?</p>
+        <input id="usernameInputTwo" type="text">
+        <p id="myDiv">What is User Three's Username?</p>
+        <input id="usernameInputThree" type="text">
         <button type="button" onclick="createTable()">Submit</button>
 
             <br>
@@ -96,7 +96,7 @@
                 <th>#</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Video Game</th>
+                <th>Username</th>
               </tr>
             </thead>
             <tbody id="tableBody">
@@ -105,45 +105,45 @@
         </div>
             
         <script>
-            var text = '{"employees":[' +
-            '{"firstName":"Kevin","lastName":"Winkelman","videoGame":"" },' +
-            '{"firstName":"Kyle","lastName":"Perri","videoGame":"" },' +
-            '{"firstName":"Jessica","lastName":"Reyes","videoGame":"" }]}';
+            var text = '{"users":[' +
+            '{"firstName":"Sandy","lastName":"Cheeks","userName":"@datsquirrel" },' +
+            '{"firstName":"SpingeBub","lastName":"Circlepants","userName":"@theonlycircle" },' +
+            '{"firstName":"Goofy","lastName":"Sanders","userName":"@disneypolitics" }]}';
             
             var data = JSON.parse(text);
             
             function createTable () {
-                var inputText = document.getElementById ("gameInput").value;
-                var inputTextSecond = document.getElementById ("gameInputTwo").value;
-                var inputTextThird = document.getElementById ("gameInputThree").value;
+                var inputText = document.getElementById ("usernameInput").value;
+                var inputTextSecond = document.getElementById ("usernameInputTwo").value;
+                var inputTextThird = document.getElementById ("usernameInputThree").value;
                 
                 var tableBody = document.getElementById ("tableBody");
                 var id = 0;
-                data.employees.forEach(function(item)
+                data.users.forEach(function(item)
                 {
                     
                     if (id == 0) {
-                        item.videoGame = inputText;
+                        item.userName = inputText;
                     } else if (id == 1) {
-                        item.videoGame = inputTextSecond;
+                        item.userName = inputTextSecond;
                     } else if (id == 2) {
-                        item.videoGame = inputTextThird;
+                        item.userName = inputTextThird;
                     }
                     var tableRow = document.createElement ("tr");
                     var tableDividerID = document.createElement ("td");
                     var tableDividerFirstName = document.createElement ("td");
                     var tableDividerLastName = document.createElement ("td");
-                    var tableVideoGame = document.createElement ("td");
+                    var tableUserName = document.createElement ("td");
 
                     tableDividerID.innerHTML = id + 1;
-                    tableDividerFirstName.innerHTML = data.employees[id].firstName;
-                    tableDividerLastName.innerHTML = data.employees[id].lastName;
-                    tableVideoGame.innerHTML = data.employees[id].videoGame;
+                    tableDividerFirstName.innerHTML = data.users[id].firstName;
+                    tableDividerLastName.innerHTML = data.users[id].lastName;
+                    tableUserName.innerHTML = data.users[id].userName;
 
                     tableRow.appendChild (tableDividerID);
                     tableRow.appendChild (tableDividerFirstName);
                     tableRow.appendChild (tableDividerLastName);
-                    tableRow.appendChild (tableVideoGame);
+                    tableRow.appendChild (tableUserName);
                     tableBody.appendChild (tableRow);
 
 
